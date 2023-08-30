@@ -9,7 +9,6 @@ type MobileItemProps = {
   icon: IconType;
   active?: boolean;
   onClick?: () => void;
-  label: string;
 };
 
 const MobileItem: React.FC<MobileItemProps> = ({
@@ -17,7 +16,6 @@ const MobileItem: React.FC<MobileItemProps> = ({
   icon: Icon,
   active,
   onClick,
-  label,
 }) => {
   const handleClick = () => {
     if (onClick) return onClick();

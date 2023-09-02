@@ -16,6 +16,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages }) => {
 
   const { conversationId } = useConversation();
 
+  // Create seen list
   useEffect(() => {
     axios.post(`/api/conversations/${conversationId}/seen`)
   }, [conversationId]);

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { FullConversationType } from "@/app/types";
@@ -9,6 +9,9 @@ import { MdOutlineGroupAdd } from "react-icons/md";
 import ConversationBox from "./ConversationBox";
 import GroupChatModal from "./GroupChatModal";
 import { User } from "@prisma/client";
+import { useSession } from "next-auth/react";
+import { pusherClient } from "@/app/libs/pusher";
+import { find } from "lodash";
 
 type ConversationListProps = {
   initialItems: FullConversationType[];
@@ -17,13 +20,58 @@ type ConversationListProps = {
 
 const ConversationList: React.FC<ConversationListProps> = ({
   initialItems,
-  users
+  users,
 }) => {
   const [items, setItems] = useState(initialItems);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
+  const session = useSession();
 
   const { conversationId, isOpen } = useConversation();
+
+  const pusherKey = useMemo(() => {
+    return session?.data?.user?.email;
+  }, [session?.data?.user?.email]);
+
+  // Setup pusher for instant messaging
+  useEffect(() => {
+    if (!pusherKey) return;
+
+    const newConversationHandler = (conversation: FullConversationType) => {
+      setItems((current) => {
+        if (find(current, { id: conversation.id })) {
+          return current;
+        }
+
+        return [conversation, ...current];
+      });
+    };
+
+    const updateConversationHandler = (conversation: FullConversationType) => {
+      setItems((current) =>
+        current.map((currentConversation) => {
+          if (currentConversation.id === conversation.id) {
+            return {
+              ...currentConversation,
+              messages: conversation.messages,
+            };
+          }
+
+          return currentConversation;
+        })
+      );
+    };
+
+    pusherClient.subscribe(pusherKey);
+    pusherClient.bind("conversation:new", newConversationHandler);
+    pusherClient.bind("conversation:update", updateConversationHandler);
+
+    return () => {
+      pusherClient.unsubscribe(pusherKey);
+      pusherClient.unbind("conversation:new", newConversationHandler);
+      pusherClient.unbind("conversation:update", updateConversationHandler);
+    };
+  }, [pusherKey]);
 
   return (
     <React.Fragment>

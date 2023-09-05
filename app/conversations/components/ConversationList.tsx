@@ -37,6 +37,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
   useEffect(() => {
     if (!pusherKey) return;
 
+    // Instant message creation
     const newConversationHandler = (conversation: FullConversationType) => {
       setItems((current) => {
         if (find(current, { id: conversation.id })) {
@@ -47,6 +48,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
       });
     };
 
+    // Instant message update
     const updateConversationHandler = (conversation: FullConversationType) => {
       setItems((current) =>
         current.map((currentConversation) => {
@@ -62,16 +64,29 @@ const ConversationList: React.FC<ConversationListProps> = ({
       );
     };
 
+    // Instant conversation deletion
+    const deleteConversationHandler = (conversation: FullConversationType) => {
+      setItems((current) => {
+        return [...current.filter((item) => item.id !== conversation.id)];
+      });
+
+      if (conversationId === conversation.id) {
+        router.push('/conversations');
+      }
+    };
+
     pusherClient.subscribe(pusherKey);
     pusherClient.bind("conversation:new", newConversationHandler);
     pusherClient.bind("conversation:update", updateConversationHandler);
+    pusherClient.bind("conversation:remove", deleteConversationHandler);
 
     return () => {
       pusherClient.unsubscribe(pusherKey);
       pusherClient.unbind("conversation:new", newConversationHandler);
       pusherClient.unbind("conversation:update", updateConversationHandler);
+      pusherClient.unbind("conversation:remove", deleteConversationHandler);
     };
-  }, [pusherKey]);
+  }, [pusherKey, conversationId]);
 
   return (
     <React.Fragment>

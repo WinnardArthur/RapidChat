@@ -44,7 +44,7 @@ const Form = () => {
         onUpload={handleUpload}
         uploadPreset="rapid-chat"
       >
-        <HiPhoto size={30} className="text-sky-500" />
+        <HiPhoto size={30} className="text-violet-500" />
       </CldUploadButton>
 
       <form
@@ -61,7 +61,7 @@ const Form = () => {
 
         <button
           type="submit"
-          className="rounded-full p-2 bg-sky-500 hover:bg-sky-600 cursor-pointer transition"
+          className="rounded-full p-2 bg-violet-500 hover:bg-violet-600 cursor-pointer transition"
         >
           <HiPaperAirplane size={18} className="text-white" />
         </button>

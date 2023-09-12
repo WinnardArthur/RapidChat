@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
       return `${conversation.users.length} members`;
     }
 
-    return isActive ? "Active" : "Offline";
+    return isActive ? "Online" : "Offline";
   }, [conversation, isActive]);
 
   return (
@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
         <div className="flex gap-3 items-center">
           <Link
             href="/conversations"
-            className="lg:hidden block text-sky-500 hover:text-sky-600 transition cursor-pointer"
+            className="lg:hidden block text-violet-500 hover:text-sky-600 transition cursor-pointer"
           >
             <HiChevronLeft size={32} />
           </Link>
@@ -65,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
           onClick={() => {
             setDrawerOpen(true);
           }}
-          className="text-sky-500 cursor-pointer hover:text-sky-600 transition"
+          className="text-violet-500 cursor-pointer hover:text-sky-600 transition"
         />
       </div>
     </>

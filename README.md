@@ -1,6 +1,6 @@
 # RapidChat Application
 
-RapidChat is a fullstack instant chat/messaging application built using Nextjs 13 AppRouter, typescript, mongoDB, prisma, pusher, zustand, etc...
+RapidChat is a fullstack instant chat/messaging application built with Nextjs 13 AppRouter, typescript, mongoDB, prisma, pusher, zustand, etc...
 
 ## Key Features
 - Authentication (Credentials, Google, GitHub)

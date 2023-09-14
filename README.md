@@ -39,6 +39,11 @@ RapidChat is a fullstack instant chat/messaging application built using Nextjs 1
 ![Image Upload](./public/images/demo/image-upload.PNG)
 
 
+## Setup Prisma
+```bash 
+npx prisma db push
+```
+
 ## Available scripts
 
 First run the development server:

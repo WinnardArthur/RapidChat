@@ -7,3 +7,29 @@ body,
 :root {
   height: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(196 181 253);
+  border-radius: 5rem;
+  -webkit-border-radius: 5rem;
+  -moz-border-radius: 5rem;
+  -ms-border-radius: 5rem;
+  -o-border-radius: 5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(76 29 149);
+  border-radius: 5rem;
+  -webkit-border-radius: 5rem;
+  -moz-border-radius: 5rem;
+  -ms-border-radius: 5rem;
+  -o-border-radius: 5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(46 16 101);
+}

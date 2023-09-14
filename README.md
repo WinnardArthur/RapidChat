@@ -1,8 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RapidChat Application
 
-## Getting Started
+RapidChat is a fullstack instant chat/messaging application built using Nextjs 13 AppRouter, typescript, mongoDB, prisma, pusher, zustand, etc...
 
-First, run the development server:
+## Key Features
+- Authentication (Credentials, Google, GitHub)
+- Real-time/Instant messaging using pusher  
+- One on one messaging/chats
+- Group chats/messaging
+- Online/Offline user status
+- Message notifications
+- Message read receipts
+- Message attachments
+- User profile settings & customization
+- Tailwindcss & HeadlessUI for smooth animations and UI
+- File & Image Upload
+- Responsiveness on all devices
+- Personalized Logo with Figma
+
+## Authentication
+![Authentication](./public/images/demo/auth.png)
+
+## Users
+![Users](./public/images/demo/People.png)
+
+## Messages/Chats
+![Messages](./public/images/demo/Message.PNG)
+
+## Create Group 
+![Group](./public/images/demo/create-group-chat.PNG)
+
+## Group Messages/Chats
+![Group](./public/images/demo/group%20messages.PNG)
+
+## User Profile & Settings
+![User Profile and Settings](./public/images/demo/user-profile.png)
+
+## Image/File Uploads
+![Image Upload](./public/images/demo/image-upload.PNG)
+
+
+## Available scripts
+
+First run the development server:
 
 ```bash
 npm run dev
@@ -14,21 +53,9 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The page will reload when you make changes.\
+You may also see any lint warnings in the console.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Deployment
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+You can find a demo of RapidChat application at [RapidChat](https://rapidchat-sigma.vercel.app/)
